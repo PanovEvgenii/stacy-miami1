@@ -1,150 +1,23 @@
-:root {
-  --bg: #090909;
-  --text: #f5f5f5;
-  --gold: #d4af37;
-  --card: #161616;
-}
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Inter, system-ui, sans-serif;
-  color: var(--text);
-  background: linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.72)), url('assets/background.jpg') center/cover fixed no-repeat;
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px 16px 24px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.hero h1 { margin: 0 0 8px; font-size: 1.85rem; line-height: 1.15; }
-.counter { margin: 0; color: #ddd; font-size: .94rem; }
-
-.buttons { display: grid; gap: 14px; margin: 20px 0; }
-
-.big-card {
-  position: relative;
-  display: block;
-  width: 100%;
-  min-height: 190px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(212,175,55,.35);
-  box-shadow: 0 10px 30px rgba(0,0,0,.45), 0 0 16px rgba(212,175,55,.12);
-  background: var(--card);
-  text-decoration: none;
-  color: var(--text);
-}
-
-.big-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display:block;
-}
-
-.big-card .overlay {
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  background: rgba(0,0,0,.35);
-  font-weight:800;
-  font-size:2rem;
-}
-
-.big-card .overlay.dark {
-  background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.18));
-}
-
-.big-card .caption {
-  position:absolute;
-  left:12px;
-  bottom:12px;
-  font-weight:700;
-  font-size:1.05rem;
-  background: rgba(0,0,0,.45);
-  padding:6px 10px;
-  border-radius: 10px;
-}
-
-.adult.locked img { filter: blur(9px) brightness(.65); transform: scale(1.08); }
-.adult.unlocked img { filter: none; transform: none; transition: .35s ease; }
-
-.ticker-wrap { min-height: 66px; margin-top: 12px; }
-.ticker { display: grid; gap: 8px; }
-
-.callout {
-  opacity: 0;
-  transform: translateY(6px);
-  animation: fadeInOut 5.4s ease forwards;
-  color: #f3e5b0;
-  font-size: .95rem;
-  text-shadow: 0 0 9px rgba(212,175,55,.28);
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(10px); }
-  14% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-8px); }
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.78);
-  display:grid;
-  place-items:center;
-  padding:16px;
-}
-
-.hidden { display:none; }
-
-.modal-card {
-  width: 100%;
-  max-width: 420px;
-  background: #111;
-  border-radius: 16px;
-  padding: 18px;
-  border:1px solid rgba(212,175,55,.35);
-}
-
-.modal-card h2 { margin:0 0 8px; }
-.modal-card p { margin:0 0 14px; color:#ddd; }
-
-.modal-actions { display:grid; gap:10px; }
-
-.btn {
-  border:0;
-  border-radius:10px;
-  padding:12px 14px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.btn.primary { background: linear-gradient(135deg, #8f6a00, #d4af37); color:#111; }
-.btn.ghost { background:#242424; color:#eee; }
-
-.sparkles {
-  position: fixed;
-  inset:0;
-  pointer-events:none;
-  background-image:
-    radial-gradient(circle at 15% 22%, rgba(212,175,55,.30) 0 1px, transparent 2px),
-    radial-gradient(circle at 75% 13%, rgba(212,175,55,.26) 0 1px, transparent 2px),
-    radial-gradient(circle at 42% 64%, rgba(212,175,55,.22) 0 1px, transparent 2px);
-  animation: twinkle 3.8s ease-in-out infinite alternate;
-}
-
-@keyframes twinkle {
-  from { opacity:.35; }
-  to { opacity:.85; }
-}
+:root { --gold:#caa556; --bg:#08070d; --card:#09070f; --text:#f3ede5; }
+*{box-sizing:border-box} body{margin:0;font-family:Inter,sans-serif;background:linear-gradient(rgba(7,6,10,.7),rgba(7,6,10,.85)),url('assets/background.jpg') center/cover no-repeat fixed;color:var(--text)}
+.app{max-width:430px;min-height:100vh;margin:0 auto;padding:18px 14px 28px}
+.lang{display:flex;justify-content:flex-end} .lang button{background:#1a1410;border:1px solid rgba(202,165,86,.35);color:var(--gold);padding:10px 16px;border-radius:22px}
+.hero{text-align:center;padding:18px 0 10px} .hero h1{font-family:'Cormorant Garamond',serif;font-size:86px;font-weight:400;letter-spacing:.08em;margin:8px 0 6px}
+.line{width:84px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 10px}.counter{font-size:.85rem;color:#cfba95}
+.cards{display:grid;gap:14px;margin-top:8px}
+.card{position:relative;display:flex;align-items:center;gap:14px;min-height:132px;background:linear-gradient(90deg,rgba(33,17,57,.55),rgba(5,4,12,.88));border:1px solid rgba(202,165,86,.35);border-radius:26px;padding:10px 14px;color:inherit;text-decoration:none;overflow:hidden}
+.thumb{width:104px;height:104px;border-radius:18px;object-fit:cover;flex-shrink:0}
+.card-content small{display:block;color:#bba06c;letter-spacing:.22em;font-size:.72rem;margin-bottom:6px}
+.card-content h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:2.15rem;margin:0;line-height:1}
+.pill{position:absolute;left:125px;top:50%;transform:translateY(-50%);background:rgba(86,60,17,.45);border:1px solid rgba(202,165,86,.55);color:#e6c074;border-radius:999px;padding:7px 18px;font-weight:700}
+.arrow{position:absolute;right:20px;color:#b8924e;font-size:2rem;opacity:.85}
+.card-adult.locked .thumb{filter:blur(8px) brightness(.65)}
+.card-adult.locked h3,.card-adult.locked small{opacity:.25}
+.ticker-wrap{margin:20px 0 26px;min-height:64px;background:rgba(7,5,11,.65);border:1px solid rgba(202,165,86,.2);border-radius:22px;padding:14px}
+.callout{color:#d8bd87;font-size:.93rem;opacity:0;animation:fade 5.4s ease forwards}
+@keyframes fade{0%{opacity:0;transform:translateY(8px)}20%,80%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-8px)}}
+footer{text-align:center;color:#6f5b35;letter-spacing:.2em;font-size:.78rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:grid;place-items:center;padding:18px}.hidden{display:none}
+.modal-card{width:100%;max-width:380px;background:#130f18;border:1px solid rgba(202,165,86,.4);border-radius:18px;padding:18px}
+.modal-card h3{margin:0 0 8px}.modal-card p{color:#d8c6a5}.modal-card button{width:100%;padding:12px;border-radius:10px;border:0;font-weight:700;margin-top:10px}
+#confirm18{background:linear-gradient(135deg,#8a651d,#d4af63);color:#1a1308}.ghost{background:#2b2533;color:#eee}
