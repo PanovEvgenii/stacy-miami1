@@ -1,66 +1,59 @@
-diff --git a/index.html b/index.html
-new file mode 100644
-index 0000000000000000000000000000000000000000..dc90245f38c0312abded8865ddc9b2ec7d7949f4
---- /dev/null
-+++ b/index.html
-@@ -0,0 +1,59 @@
-+<!doctype html>
-+<html lang="en">
-+  <head>
-+    <meta charset="UTF-8" />
-+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+    <title>stacy link</title>
-+    <link rel="preconnect" href="https://fonts.googleapis.com" />
-+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-+    <link rel="stylesheet" href="styles.css" />
-+  </head>
-+  <body>
-+    <main class="app">
-+      <div class="lang"><button id="langBtn">EN ▾</button></div>
-+
-+      <header class="hero">
-+        <h1 id="title">Stacy</h1>
-+        <div class="line"></div>
-+        <p class="counter"><span id="counterLabel">Visitors this month</span>: <span id="visitorsCount">...</span></p>
-+      </header>
-+
-+      <section class="cards">
-+        <button id="adultBtn" class="card card-adult locked">
-+          <img src="assets/adult.jpg" alt="adult" class="thumb" />
-+          <div class="card-content">
-+            <small id="adultTop">✦ EXCLUSIVE CONTENT</small>
-+            <h3 id="adultName">Fanvue</h3>
-+          </div>
-+          <span class="pill" id="adultPill">18+</span>
-+          <span class="arrow">→</span>
-+        </button>
-+
-+        <a class="card" href="https://t.me/+sWIekAl0YBMxNWVh" target="_blank" rel="noopener noreferrer">
-+          <img src="assets/telegram.jpg" alt="telegram" class="thumb" />
-+          <div class="card-content">
-+            <small id="tgTop">✦ FREE CHANNEL</small>
-+            <h3 id="tgName">Telegram</h3>
-+          </div>
-+          <span class="arrow">→</span>
-+        </a>
-+      </section>
-+
-+      <section class="ticker-wrap"><div id="ticker" class="ticker"></div></section>
-+
-+      <footer>STACY · PRIVATE · 2026</footer>
-+    </main>
-+
-+    <div id="ageModal" class="modal hidden">
-+      <div class="modal-card">
-+        <h3>18+</h3>
-+        <p id="ageText">Are you 18 years old or older?</p>
-+        <button id="confirm18">Yes, I am 18+</button>
-+        <button id="deny18" class="ghost">No, I'm under 18</button>
-+      </div>
-+    </div>
-+
-+    <script src="script.js"></script>
-+  </body>
-+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stacy link</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="lang"><button id="langBtn">EN ▾</button></div>
 
+      <header class="hero">
+        <h1 id="title">Stacy</h1>
+        <div class="line"></div>
+        <p class="counter"><span id="counterLabel">Visitors this month</span>: <span id="visitorsCount">...</span></p>
+      </header>
+
+      <section class="cards">
+        <button id="adultBtn" class="card card-adult locked">
+          <img src="assets/adult.jpg" alt="adult" class="thumb" />
+          <div class="card-content">
+            <small id="adultTop">✦ EXCLUSIVE CONTENT</small>
+            <h3 id="adultName">Fanvue</h3>
+          </div>
+          <span class="pill" id="adultPill">18+</span>
+          <span class="fade-edge"></span><span class="arrow">→</span>
+        </button>
+
+        <a class="card" href="https://t.me/+sWIekAl0YBMxNWVh" target="_blank" rel="noopener noreferrer">
+          <img src="assets/telegram.jpg" alt="telegram" class="thumb" />
+          <div class="card-content">
+            <small id="tgTop">✦ FREE CHANNEL</small>
+            <h3 id="tgName">Telegram</h3>
+          </div>
+          <span class="fade-edge"></span><span class="arrow">→</span>
+        </a>
+      </section>
+
+      <section class="ticker-wrap"><div id="ticker" class="ticker"></div></section>
+
+      <footer>STACY · PRIVATE · 2026</footer>
+    </main>
+
+    <div id="ageModal" class="modal hidden">
+      <div class="modal-card">
+        <h3>18+</h3>
+        <p id="ageText">Are you 18 years old or older?</p>
+        <button id="confirm18">Yes, I am 18+</button>
+        <button id="deny18" class="ghost">No, I'm under 18</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
