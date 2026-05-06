@@ -1,62 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exclusive Content Stacy</title>
-    <meta name="description" content="Exclusive Content Stacy" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="sparkles" aria-hidden="true"></div>
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..dc90245f38c0312abded8865ddc9b2ec7d7949f4
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,59 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>stacy link</title>
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
++    <link rel="stylesheet" href="styles.css" />
++  </head>
++  <body>
++    <main class="app">
++      <div class="lang"><button id="langBtn">EN ▾</button></div>
++
++      <header class="hero">
++        <h1 id="title">Stacy</h1>
++        <div class="line"></div>
++        <p class="counter"><span id="counterLabel">Visitors this month</span>: <span id="visitorsCount">...</span></p>
++      </header>
++
++      <section class="cards">
++        <button id="adultBtn" class="card card-adult locked">
++          <img src="assets/adult.jpg" alt="adult" class="thumb" />
++          <div class="card-content">
++            <small id="adultTop">✦ EXCLUSIVE CONTENT</small>
++            <h3 id="adultName">Fanvue</h3>
++          </div>
++          <span class="pill" id="adultPill">18+</span>
++          <span class="arrow">→</span>
++        </button>
++
++        <a class="card" href="https://t.me/+sWIekAl0YBMxNWVh" target="_blank" rel="noopener noreferrer">
++          <img src="assets/telegram.jpg" alt="telegram" class="thumb" />
++          <div class="card-content">
++            <small id="tgTop">✦ FREE CHANNEL</small>
++            <h3 id="tgName">Telegram</h3>
++          </div>
++          <span class="arrow">→</span>
++        </a>
++      </section>
++
++      <section class="ticker-wrap"><div id="ticker" class="ticker"></div></section>
++
++      <footer>STACY · PRIVATE · 2026</footer>
++    </main>
++
++    <div id="ageModal" class="modal hidden">
++      <div class="modal-card">
++        <h3>18+</h3>
++        <p id="ageText">Are you 18 years old or older?</p>
++        <button id="confirm18">Yes, I am 18+</button>
++        <button id="deny18" class="ghost">No, I'm under 18</button>
++      </div>
++    </div>
++
++    <script src="script.js"></script>
++  </body>
++</html>
 
-    <main class="page">
-      <header class="hero">
-        <h1 id="title">Exclusive Content Stacy</h1>
-        <p class="counter"><span id="counterLabel">Visitors this month:</span> <strong id="visitorsCount">0</strong></p>
-      </header>
-
-      <section class="buttons">
-        <button id="adultBtn" class="big-card adult locked" aria-label="18+ content">
-          <img src="assets/adult.jpg" alt="18+" />
-          <div class="overlay">
-            <span id="adultOverlayText">18+</span>
-          </div>
-          <div class="caption" id="adultCaption">18+</div>
-        </button>
-
-        <a
-          class="big-card tg"
-          href="https://t.me/+sWIekAl0YBMxNWVh"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Telegram"
-        >
-          <img src="assets/telegram.jpg" alt="Telegram" />
-          <div class="overlay dark"></div>
-          <div class="caption" id="tgCaption">Telegram</div>
-        </a>
-      </section>
-
-      <section class="ticker-wrap" aria-live="polite">
-        <div id="ticker" class="ticker"></div>
-      </section>
-    </main>
-
-    <div id="ageModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
-      <div class="modal-card">
-        <h2 id="ageTitle">18+</h2>
-        <p id="ageText">Are you 18 years old or older?</p>
-        <div class="modal-actions">
-          <button id="confirm18" class="btn primary">Yes, I am 18+</button>
-          <button id="deny18" class="btn ghost">No, I'm under 18</button>
-        </div>
-      </div>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
-</html>
