@@ -1,149 +1,33 @@
 const FANVUE_URL = 'https://www.fanvue.com/stacy_miami/fv-3';
-const TG_URL = 'https://t.me/+sWIekAl0YBMxNWVh';
-
 const i18n = {
-  en: {
-    title: 'Exclusive Content Stacy',
-    adult: '18+',
-    adultUnlocked: 'Exclusive Content',
-    tg: 'Telegram',
-    modalQ: 'Are you 18 years old or older?',
-    yes: 'Yes, I am 18+',
-    no: "No, I'm under 18",
-    counter: 'Visitors this month:',
-    counterLoading: 'Loading...',
-    lines: [
-      'Private updates are waiting for you ✨',
-      'Tap and unlock exclusive access',
-      'Join now and don’t miss new drops',
-      'Members get content first',
-      'Your premium feed starts here',
-      'Open the private channel now',
-      'Fresh content appears every day',
-      'See what others can’t',
-      'Unlock the special section now',
-      'VIP mood. One tap away.',
-      'A better side of Stacy is here',
-      'Instant access in one click',
-      'Private moments. Premium vibe.',
-      'Tap 18+ to continue',
-      'Telegram has daily extras',
-      'Join the circle and stay close',
-      'Exclusive posts are live',
-      'Don’t scroll past this chance'
-    ]
-  },
-  ru: {
-    title: 'Exclusive Content Stacy',
-    adult: '18+',
-    adultUnlocked: 'Эксклюзивный контент',
-    tg: 'Telegram',
-    modalQ: 'Вам уже есть 18 лет?',
-    yes: 'Да, мне есть 18+',
-    no: 'Мне нет 18',
-    counter: 'Посетителей за месяц:',
-    counterLoading: 'Загрузка...',
-    lines: [
-      'Личный контент уже ждёт тебя ✨',
-      'Нажми и открой эксклюзив',
-      'Подпишись и не пропускай новинки',
-      'Участники видят всё первыми',
-      'Твой премиум-доступ начинается здесь',
-      'Открой приватный канал прямо сейчас',
-      'Новый контент появляется каждый день',
-      'Посмотри то, что скрыто от других',
-      'Открой специальный раздел',
-      'VIP-настроение в один клик',
-      'Лучшая сторона Stacy уже здесь',
-      'Мгновенный доступ без лишних шагов',
-      'Приватные моменты в премиум-стиле',
-      'Нажми 18+ и продолжи',
-      'В Telegram — ежедневные апдейты',
-      'Вступай в круг и будь ближе',
-      'Эксклюзивные посты уже доступны',
-      'Не пролистывай свой шанс'
-    ]
-  }
+  en: {counter:'Visitors this month', age:'Are you 18 years old or older?', yes:'Yes, I am 18+', no:"No, I'm under 18", adultTop:'✦ EXCLUSIVE CONTENT', tgTop:'✦ FREE CHANNEL', lines:['Private updates are waiting for you ✨','Tap and unlock exclusive access','Join now and don’t miss new drops','VIP mood. One tap away.','Telegram has daily extras','Exclusive posts are live']},
+  ru: {counter:'Посетителей за месяц', age:'Вам уже есть 18 лет?', yes:'Да, мне есть 18+', no:'Мне нет 18', adultTop:'✦ ЭКСКЛЮЗИВНЫЙ КОНТЕНТ', tgTop:'✦ БЕСПЛАТНЫЙ КАНАЛ', lines:['Личный контент уже ждёт тебя ✨','Нажми и открой эксклюзив','Подпишись и не пропускай новинки','VIP-настроение в один клик','В Telegram — ежедневные апдейты','Эксклюзивные посты уже доступны']}
 };
+let lang = (navigator.language||'en').toLowerCase().startsWith('ru') ? 'ru':'en';
+const $ = (s)=>document.querySelector(s);
 
-const lang = (navigator.language || 'en').toLowerCase().startsWith('ru') ? 'ru' : 'en';
-const t = i18n[lang];
+function applyLang(){
+  const t=i18n[lang];
+  $('#counterLabel').textContent=t.counter; $('#ageText').textContent=t.age; $('#confirm18').textContent=t.yes; $('#deny18').textContent=t.no;
+  $('#adultTop').textContent=t.adultTop; $('#tgTop').textContent=t.tgTop; $('#langBtn').textContent=(lang==='ru'?'RU':'EN')+' ▾';
+}
+$('#langBtn').addEventListener('click',()=>{lang=lang==='ru'?'en':'ru';applyLang();renderTicker();});
 
-const els = {
-  title: document.getElementById('title'),
-  adultOverlayText: document.getElementById('adultOverlayText'),
-  adultCaption: document.getElementById('adultCaption'),
-  tgCaption: document.getElementById('tgCaption'),
-  ageText: document.getElementById('ageText'),
-  confirm18: document.getElementById('confirm18'),
-  deny18: document.getElementById('deny18'),
-  counterLabel: document.getElementById('counterLabel'),
-  ticker: document.getElementById('ticker'),
-  adultBtn: document.getElementById('adultBtn'),
-  ageModal: document.getElementById('ageModal'),
-  visitorsCount: document.getElementById('visitorsCount')
-};
+$('#adultBtn').addEventListener('click',()=>$('#ageModal').classList.remove('hidden'));
+$('#confirm18').addEventListener('click',()=>{ $('#ageModal').classList.add('hidden'); $('#adultBtn').classList.remove('locked'); window.open(FANVUE_URL,'_blank','noopener,noreferrer'); });
+$('#deny18').addEventListener('click',()=>$('#ageModal').classList.add('hidden'));
 
-els.title.textContent = t.title;
-els.adultOverlayText.textContent = t.adult;
-els.adultCaption.textContent = t.adult;
-els.tgCaption.textContent = t.tg;
-els.ageText.textContent = t.modalQ;
-els.confirm18.textContent = t.yes;
-els.deny18.textContent = t.no;
-els.counterLabel.textContent = t.counter;
-els.visitorsCount.textContent = t.counterLoading;
+function renderTicker(){
+  const lines=i18n[lang].lines.sort(()=>Math.random()-0.5).slice(0,3);
+  $('#ticker').innerHTML='';
+  lines.forEach(line=>{const d=document.createElement('div'); d.className='callout'; d.textContent=line; $('#ticker').appendChild(d);});
+}
+setInterval(renderTicker,5600);
 
-document.querySelector('.big-card.tg').setAttribute('href', TG_URL);
-
-els.adultBtn.addEventListener('click', () => els.ageModal.classList.remove('hidden'));
-els.confirm18.addEventListener('click', () => {
-  els.ageModal.classList.add('hidden');
-  els.adultBtn.classList.remove('locked');
-  els.adultBtn.classList.add('unlocked');
-  els.adultOverlayText.textContent = '';
-  els.adultCaption.textContent = t.adultUnlocked;
-  setTimeout(() => window.open(FANVUE_URL, '_blank', 'noopener,noreferrer'), 250);
-});
-els.deny18.addEventListener('click', () => els.ageModal.classList.add('hidden'));
-
-function shuffle(arr) {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
+async function counter(){
+  const d=new Date(); const m=`${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}`;
+  try{const r=await fetch(`https://api.countapi.xyz/hit/stacy-global-traffic/visitors-${m}`); const j=await r.json(); $('#visitorsCount').textContent=j.value ?? 0;}
+  catch{ $('#visitorsCount').textContent='—'; }
 }
 
-function renderTicker() {
-  els.ticker.innerHTML = '';
-  shuffle(t.lines).slice(0, 3).forEach((line) => {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.textContent = line;
-    els.ticker.appendChild(div);
-  });
-}
-
-renderTicker();
-setInterval(renderTicker, 5600);
-
-async function globalMonthlyCounter() {
-  const now = new Date();
-  const monthKey = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}`;
-  const namespace = 'stacy-global-traffic';
-  const key = `visitors-${monthKey}`;
-
-  try {
-    const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
-    const res = await fetch(url, { method: 'GET', cache: 'no-store' });
-    if (!res.ok) throw new Error('counter_response_failed');
-    const data = await res.json();
-    els.visitorsCount.textContent = String(data.value ?? 0);
-  } catch {
-    els.visitorsCount.textContent = '—';
-  }
-}
-
-globalMonthlyCounter();
+applyLang(); renderTicker(); counter();
