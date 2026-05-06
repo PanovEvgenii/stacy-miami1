@@ -5,6 +5,7 @@ const i18n = {
 };
 let lang=(navigator.language||'en').toLowerCase().startsWith('ru')?'ru':'en';
 const $=(s)=>document.querySelector(s);
+const overlay = document.getElementById('tickerOverlay');
 
 function applyLang(){const t=i18n[lang];$('#counterLabel').textContent=t.counter;$('#ageText').textContent=t.age;$('#confirm18').textContent=t.yes;$('#deny18').textContent=t.no;$('#adultTop').textContent=t.adultTop;$('#tgTop').textContent=t.tgTop;$('#langBtn').textContent=(lang==='ru'?'RU':'EN')+' ▾';}
 $('#langBtn').addEventListener('click',()=>{lang=lang==='ru'?'en':'ru';applyLang();renderTicker();});
@@ -17,18 +18,19 @@ function randomDir(){
   return dirs[Math.floor(Math.random()*dirs.length)];
 }
 function renderTicker(){
+  if(!overlay) return;
   const lines=[...i18n[lang].lines].sort(()=>Math.random()-0.5).slice(0,3);
-  const t=$('#ticker'); t.innerHTML='';
+  overlay.innerHTML='';
   lines.forEach((line,i)=>{
-    const d=document.createElement('div'); d.className='callout run'; d.textContent=line;
-    const [sx,sy,ex,ey]=randomDir();
-    d.style.setProperty('--sx',`${sx}px`); d.style.setProperty('--sy',`${sy + i*8}px`);
-    d.style.setProperty('--ex',`${ex}px`); d.style.setProperty('--ey',`${ey + i*8}px`);
-    d.style.animationDelay=`${i*0.2}s`;
-    t.appendChild(d);
+    const d=document.createElement('div');
+    d.className='flyline '+(Math.random()>0.5?'run-ltr':'run-rtl');
+    d.textContent=line;
+    d.style.top=`${36 + Math.random()*44}%`;
+    d.style.animationDelay=`${i*0.35}s`;
+    overlay.appendChild(d);
   });
 }
-setInterval(renderTicker,5200);
+setInterval(renderTicker,5400);
 
 setInterval(()=>{
   document.querySelectorAll('.card').forEach(c=>c.classList.toggle('pulse'));
